@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TravelMate — Book Trips, Treks, Stays</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body class="theme-dark fade-in">
+  <header class="navbar">
+    <div class="brand">
+      <img src="assets/icons/pin.svg" alt="" class="logo" />
+      <span>TravelMate</span>
+    </div>
+      <nav class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="pages/about_us.html">About Us</a>
+        <a href="pages/destinations.html">Destinations</a>
+        <a href="pages/booking.html">Booking</a>
+        <a href="pages/customer_reviews.html">Reviews</a>
+        <a href="pages/contact_us.html">Contact</a>
+      </nav>
+  </header>
+
+  <section class="hero" style="position:relative;min-height:60vh;overflow:hidden;">
+    <!-- Example video background (replace with your own in assets/videos/hero.mp4) -->
+    <video autoplay muted loop playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:brightness(0.7);">
+      <source src="assets/videos/hero.mp4" type="video/mp4">
+      <img src="assets/images/hero.jpg" alt="Travel" style="width:100%;height:100%;object-fit:cover;">
+    </video>
+    <div class="hero-content" style="position:relative;z-index:1;">
+      <h1 style="font-size:clamp(32px,6vw,60px);font-weight:900;letter-spacing:-1px;">Find Your Next Adventure</h1>
+      <p style="font-size:1.3em;color:var(--muted);max-width:600px;margin:0 auto 18px;">Flights, stays, buses, trains, treks & international trips — all in one place. Discover, book, and explore with TravelMate.</p>
+    </div>
+  </section>
+
+  <section class="section" id="search-section">
+    <form id="searchForm" class="searchbar" autocomplete="off">
+      <input id="q" name="q" type="text" placeholder="Search: Goa, Manali, Paris, Trek…" />
+      <input id="date" name="date" type="date" />
+      <select id="type" name="type">
+        <option value="">Any</option>
+        <option>Flight</option>
+        <option>Hotel</option>
+        <option>Bus</option>
+        <option>Train</option>
+        <option>Trek</option>
+        <option>International</option>
+      </select>
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </section>
+
+  <!-- Personalized Recommendations -->
+  <section class="section" id="recommend">
+    <h2>Recommended For You</h2>
+    <div id="recommendGrid" class="grid cards"></div>
+  </section>
+
+  <section class="section" id="gallery">
+    <h2>Travel Gallery</h2>
+    <div class="grid cards" id="galleryGrid">
+      <img src="assets/images/gallery/gallery1.jpg" alt="Sunrise at the Beach" loading="lazy" style="width:100%;height:180px;object-fit:cover;border-radius:12px;">
+      <video src="assets/videos/gallery2.mp4" controls poster="assets/images/gallery/gallery2.jpg" style="width:100%;height:180px;object-fit:cover;border-radius:12px;" title="Mountain Trekking"></video>
+      <img src="assets/images/gallery/gallery3.jpg" alt="City Lights" loading="lazy" style="width:100%;height:180px;object-fit:cover;border-radius:12px;">
+      <video src="assets/videos/gallery4.mp4" controls poster="assets/images/gallery/gallery4.jpg" style="width:100%;height:180px;object-fit:cover;border-radius:12px;" title="River Rafting"></video>
+      <img src="assets/images/gallery/gallery5.jpg" alt="Desert Adventure" loading="lazy" style="width:100%;height:180px;object-fit:cover;border-radius:12px;">
+      <video src="assets/videos/gallery6.mp4" controls poster="assets/images/gallery/gallery6.jpg" style="width:100%;height:180px;object-fit:cover;border-radius:12px;" title="Hot Air Balloon Ride"></video>
+    </div>
+  </section>
+
+  <section class="section alt" id="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div id="faqList" class="faq-list enhanced"></div>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> TravelMate • <a href="mailto:contact@travelmate.com" style="color:var(--muted)">contact@travelmate.com</a></p>
+    <p style="margin-top:8px;font-size:.95em;">Follow us:
+      <a href="https://instagram.com/" target="_blank" style="color:var(--primary)">Instagram</a> |
+      <a href="https://facebook.com/" target="_blank" style="color:var(--primary)">Facebook</a> |
+      <a href="https://twitter.com/" target="_blank" style="color:var(--primary)">Twitter</a>
+    </p>
+  </footer>
+
+  <!-- Chatbot -->
+  <button id="chatButton" class="chat-button" aria-label="Open chat" aria-haspopup="dialog" aria-controls="chatWindow">💬</button>
+  <div id="chatWindow" class="chat-window hidden" role="dialog" aria-modal="true" aria-label="Support Chat">
+    <div class="chat-header">
+      <strong id="chatTitle">Support Bot</strong>
+      <button id="chatClose" class="chat-close" aria-label="Close chat window">×</button>
+    </div>
+    <div id="chatBody" class="chat-body" aria-live="polite" aria-atomic="false"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Ask about booking, refund, visa…" aria-label="Type your message" autocomplete="off" />
+      <button id="chatSend" aria-label="Send message">Send</button>
+    </div>
+  </div>
+
+  <script src="scripts/api.js"></script>
+  <script type="module" src="scripts/api.js"></script>
+  <script type="module" src="scripts/main.js"></script>
+  <script src="scripts/chatbot.js"></script>
+  <script>
+    // Personalized recommendations (based on last search)
+    const recommendGrid = document.getElementById('recommendGrid');
+    function saveLastSearch(q, type) {
+      localStorage.setItem('lastSearch', JSON.stringify({q, type}));
+    }
+    function getLastSearch() {
+      try { return JSON.parse(localStorage.getItem('lastSearch') || '{}'); } catch { return {}; }
+    }
+    document.getElementById('searchForm').addEventListener('submit', e => {
+      const q = document.getElementById('q').value;
+      const type = document.getElementById('type').value;
+      saveLastSearch(q, type);
+    });
+    async function renderRecommendations() {
+      const {q, type} = getLastSearch();
+      if (!q && !type) { recommendGrid.innerHTML = '<div class="muted">Search for a destination to get recommendations!</div>'; return; }
+      const res = await fetch('data/tours.json');
+      const tours = await res.json();
+      const filtered = tours.filter(t =>
+        (q ? (t.title.toLowerCase().includes(q.toLowerCase()) || (t.short||'').toLowerCase().includes(q.toLowerCase())) : true) &&
+        (type ? t.type === type : true)
+      );
+      recommendGrid.innerHTML = filtered.length ? filtered.map(t => `
+        <article class="card fade-in">
+          <img src="${t.image}" alt="${t.title}" loading="lazy">
+          <div class="p">
+            <h3>${t.title}</h3>
+            <p>${t.short || ''}</p>
+            <p class="price">${t.currency || '₹'}${t.price}</p>
+            <a class="btn" href="pages/booking.html?tour=${encodeURIComponent(t.id)}">Book</a>
+          </div>
+        </article>
+      `).join('') : '<div class="muted">No recommendations found. Try a different search!</div>';
+    }
+    renderRecommendations();
+  </script>
+  <script>
+    // Render FAQ
+    async function renderFAQ() {
+      const wrap = document.getElementById("faqList");
+      if (!wrap) return;
+      const faq = await fetchFAQ();
+      wrap.innerHTML = Object.entries(faq).map(([k,v],i)=>
+        `<details class="faq-item fade-in"${i===0?' open':''}><summary>${k.charAt(0).toUpperCase()+k.slice(1)}</summary><div>${v}</div></details>`
+      ).join("");
+    }
+    renderFAQ();
+  </script>
+  <script>
+    // Simple reviews logic (localStorage for demo)
+    const reviewsList = document.getElementById('reviewsList');
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewMsg = document.getElementById('reviewMsg');
+    function getReviews() {
+      return JSON.parse(localStorage.getItem('reviews') || '[]');
+    }
+    function saveReview(r) {
+      const all = getReviews();
+      all.unshift(r); localStorage.setItem('reviews', JSON.stringify(all));
+    }
+    function renderReviews() {
+      const all = getReviews();
+      reviewsList.innerHTML = all.length ? all.map(r => `
+        <div class="feature" style="background:var(--card);">
+          <strong>${r.name}</strong> <span style="color:gold;">${'★'.repeat(r.rating)}</span><br>
+          <span style="color:var(--muted);font-size:.98em;">${r.review}</span>
+        </div>
+      `).join('') : '<div class="muted">No reviews yet. Be the first!</div>';
+    }
+    reviewForm.onsubmit = e => {
+      e.preventDefault();
+      const fd = new FormData(reviewForm);
+      const r = { name: fd.get('name'), review: fd.get('review'), rating: fd.get('rating') };
+      saveReview(r);
+      reviewForm.reset();
+      reviewMsg.textContent = 'Thank you for your review!';
+      renderReviews();
+      setTimeout(()=>reviewMsg.textContent='', 2000);
+    };
+    // Demo: add a few reviews if none
+    if (!getReviews().length) {
+      saveReview({ name: 'Amit', review: 'Amazing booking experience!', rating: 5 });
+      saveReview({ name: 'Sara', review: 'Loved the support and deals.', rating: 4 });
+    }
+    renderReviews();
+  </script>
+  <script>
+    // Theme toggle logic
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(mode) {
+      document.body.classList.toggle('theme-dark', mode === 'dark');
+      document.body.classList.toggle('theme-light', mode === 'light');
+      themeToggle.textContent = mode === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('theme', mode);
+    }
+    themeToggle.addEventListener('click', () => {
+      const mode = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
+      setTheme(mode);
+    });
+    // On load
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(savedTheme);
+    // Open chatbot automatically after 2 seconds
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const chatBtn = document.getElementById('chatButton');
+        if (chatBtn) chatBtn.click();
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

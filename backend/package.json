@@ -1,0 +1,13 @@
+{
+  "name": "travelmate-backend",
+  "version": "1.0.0",
+  "description": "TravelMate backend API server",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "dev": "python app.py"
+  },
+  "keywords": ["travel", "booking", "api", "flask"],
+  "author": "Your Name",
+  "license": "MIT"
+}

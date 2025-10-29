@@ -1,0 +1,303 @@
+[
+  {
+    "id": "goa-beach-3n",
+    "title": "Goa Beach Escape (3N/4D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 12999,
+    "short": "Beachside resort + breakfast + airport pickup",
+    "featured": true,
+    "image": "assets/images/destinations/goa.jpg",
+    "gallery": [
+      "assets/images/tours/goa1.jpg",
+      "assets/images/tours/goa2.jpg",
+      "assets/images/tours/goa3.jpg"
+    ]
+  },
+  {
+    "id": "goa-budget-2n",
+    "title": "Goa Budget Stay (2N/3D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 6999,
+    "short": "Budget hotel + breakfast + shared transfer",
+    "featured": false,
+    "image": "assets/images/destinations/goa.jpg",
+    "gallery": [
+      "assets/images/tours/goa1.jpg",
+      "assets/images/tours/goa2.jpg"
+    ]
+  },
+  {
+    "id": "goa-luxury-4n",
+    "title": "Goa Luxury Retreat (4N/5D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 24999,
+    "short": "5-star resort + spa + private cab + all meals",
+    "featured": true,
+    "image": "assets/images/destinations/goa.jpg",
+    "gallery": [
+      "assets/images/tours/goa2.jpg",
+      "assets/images/tours/goa3.jpg"
+    ]
+  },
+  {
+    "id": "manali-trek-4n",
+    "title": "Manali Trek & Camp (4N/5D)",
+    "type": "Trek",
+    "currency": "₹",
+    "price": 15499,
+    "short": "Guided trek, camp, meals & permits",
+    "featured": true,
+    "image": "assets/images/destinations/manali.jpg",
+    "gallery": [
+      "assets/images/tours/manali1.jpg",
+      "assets/images/tours/manali2.jpg",
+      "assets/images/tours/manali3.jpg"
+    ]
+  },
+  {
+    "id": "manali-budget-3n",
+    "title": "Manali Budget Adventure (3N/4D)",
+    "type": "Trek",
+    "currency": "₹",
+    "price": 9999,
+    "short": "Basic camp + group trek + meals",
+    "featured": false,
+    "image": "assets/images/destinations/manali.jpg",
+    "gallery": [
+      "assets/images/tours/manali1.jpg",
+      "assets/images/tours/manali2.jpg"
+    ]
+  },
+  {
+    "id": "manali-premium-5n",
+    "title": "Manali Premium Trek (5N/6D)",
+    "type": "Trek",
+    "currency": "₹",
+    "price": 19999,
+    "short": "Luxury camp + private guide + all meals",
+    "featured": true,
+    "image": "assets/images/destinations/manali.jpg",
+    "gallery": [
+      "assets/images/tours/manali2.jpg",
+      "assets/images/tours/manali3.jpg"
+    ]
+  },
+  {
+    "id": "jaipur-heritage-2n",
+    "title": "Jaipur Heritage (2N/3D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 8999,
+    "short": "City tour + palace tickets + local cuisine",
+    "featured": false,
+    "image": "assets/images/destinations/jaipur.jpg",
+    "gallery": [
+      "assets/images/tours/jaipur1.jpg",
+      "assets/images/tours/jaipur2.jpg",
+      "assets/images/tours/jaipur3.jpg"
+    ]
+  },
+  {
+    "id": "jaipur-budget-2n",
+    "title": "Jaipur Budget Explorer (2N/3D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 5999,
+    "short": "Budget stay + walking tour + local food",
+    "featured": false,
+    "image": "assets/images/destinations/jaipur.jpg",
+    "gallery": [
+      "assets/images/tours/jaipur1.jpg",
+      "assets/images/tours/jaipur2.jpg"
+    ]
+  },
+  {
+    "id": "jaipur-luxury-3n",
+    "title": "Jaipur Royal Luxury (3N/4D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 17999,
+    "short": "5-star palace stay + private guide + all meals",
+    "featured": true,
+    "image": "assets/images/destinations/jaipur.jpg",
+    "gallery": [
+      "assets/images/tours/jaipur2.jpg",
+      "assets/images/tours/jaipur3.jpg"
+    ]
+  },
+  {
+    "id": "paris-romance-5n",
+    "title": "Paris International (5N/6D)",
+    "type": "International",
+    "currency": "€",
+    "price": 899,
+    "short": "Flights + stay + city pass",
+    "featured": true,
+    "image": "assets/images/destinations/paris.jpg",
+    "gallery": [
+      "assets/images/tours/paris1.jpg",
+      "assets/images/tours/paris2.jpg",
+      "assets/images/tours/paris3.jpg"
+    ]
+  },
+  {
+    "id": "paris-budget-4n",
+    "title": "Paris Budget Trip (4N/5D)",
+    "type": "International",
+    "currency": "€",
+    "price": 599,
+    "short": "Hostel stay + metro pass + group tour",
+    "featured": false,
+    "image": "assets/images/destinations/paris.jpg",
+    "gallery": [
+      "assets/images/tours/paris1.jpg",
+      "assets/images/tours/paris2.jpg"
+    ]
+  },
+  {
+    "id": "paris-luxury-6n",
+    "title": "Paris Luxury Experience (6N/7D)",
+    "type": "International",
+    "currency": "€",
+    "price": 1799,
+    "short": "5-star hotel + private tours + gourmet dining",
+    "featured": true,
+    "image": "assets/images/destinations/paris.jpg",
+    "gallery": [
+      "assets/images/tours/paris2.jpg",
+      "assets/images/tours/paris3.jpg"
+    ]
+  },
+  {
+    "id": "bali-adventure-5n",
+    "title": "Bali Adventure (5N/6D)",
+    "type": "International",
+    "currency": "$",
+    "price": 799,
+    "short": "Resort stay + temple tour + water sports",
+    "featured": true,
+    "image": "assets/images/destinations/bali.jpg",
+    "gallery": [
+      "assets/images/tours/bali1.jpg",
+      "assets/images/tours/bali2.jpg",
+      "assets/images/tours/bali3.jpg"
+    ]
+  },
+  {
+    "id": "bali-budget-4n",
+    "title": "Bali Budget Escape (4N/5D)",
+    "type": "International",
+    "currency": "$",
+    "price": 499,
+    "short": "Hostel + group sightseeing + beach day",
+    "featured": false,
+    "image": "assets/images/destinations/bali.jpg",
+    "gallery": [
+      "assets/images/tours/bali1.jpg",
+      "assets/images/tours/bali2.jpg"
+    ]
+  },
+  {
+    "id": "bali-luxury-6n",
+    "title": "Bali Luxury Retreat (6N/7D)",
+    "type": "International",
+    "currency": "$",
+    "price": 1499,
+    "short": "5-star villa + spa + private excursions",
+    "featured": true,
+    "image": "assets/images/destinations/bali.jpg",
+    "gallery": [
+      "assets/images/tours/bali2.jpg",
+      "assets/images/tours/bali3.jpg"
+    ]
+  },
+  {
+    "id": "kerala-backwaters-3n",
+    "title": "Kerala Backwaters (3N/4D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 11999,
+    "short": "Houseboat + meals + village tour",
+    "featured": true,
+    "image": "assets/images/destinations/kerala.jpg",
+    "gallery": [
+      "assets/images/tours/kerala1.jpg",
+      "assets/images/tours/kerala2.jpg",
+      "assets/images/tours/kerala3.jpg"
+    ]
+  },
+  {
+    "id": "kerala-budget-2n",
+    "title": "Kerala Budget Cruise (2N/3D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 6999,
+    "short": "Shared houseboat + local meals",
+    "featured": false,
+    "image": "assets/images/destinations/kerala.jpg",
+    "gallery": [
+      "assets/images/tours/kerala1.jpg",
+      "assets/images/tours/kerala2.jpg"
+    ]
+  },
+  {
+    "id": "kerala-luxury-4n",
+    "title": "Kerala Luxury Houseboat (4N/5D)",
+    "type": "Hotel",
+    "currency": "₹",
+    "price": 19999,
+    "short": "Luxury houseboat + chef + private guide",
+    "featured": true,
+    "image": "assets/images/destinations/kerala.jpg",
+    "gallery": [
+      "assets/images/tours/kerala2.jpg",
+      "assets/images/tours/kerala3.jpg"
+    ]
+  },
+  {
+    "id": "leh-ladakh-6n",
+    "title": "Leh-Ladakh Adventure (6N/7D)",
+    "type": "Trek",
+    "currency": "₹",
+    "price": 24999,
+    "short": "Bike tour + camping + Nubra Valley",
+    "featured": true,
+    "image": "assets/images/destinations/ladakh.jpg",
+    "gallery": [
+      "assets/images/tours/ladakh1.jpg",
+      "assets/images/tours/ladakh2.jpg",
+      "assets/images/tours/ladakh3.jpg"
+    ]
+  },
+  {
+    "id": "leh-budget-5n",
+    "title": "Leh Budget Explorer (5N/6D)",
+    "type": "Trek",
+    "currency": "₹",
+    "price": 14999,
+    "short": "Group tour + shared camp + local guide",
+    "featured": false,
+    "image": "assets/images/destinations/ladakh.jpg",
+    "gallery": [
+      "assets/images/tours/ladakh1.jpg",
+      "assets/images/tours/ladakh2.jpg"
+    ]
+  },
+  {
+    "id": "leh-luxury-7n",
+    "title": "Leh-Ladakh Luxury (7N/8D)",
+    "type": "Trek",
+    "currency": "₹",
+    "price": 39999,
+    "short": "Luxury camp + private SUV + gourmet meals",
+    "featured": true,
+    "image": "assets/images/destinations/ladakh.jpg",
+    "gallery": [
+      "assets/images/tours/ladakh2.jpg",
+      "assets/images/tours/ladakh3.jpg"
+    ]
+  }
+]

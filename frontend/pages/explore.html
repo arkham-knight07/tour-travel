@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Explore the World — TravelMate</title>
+  <link rel="stylesheet" href="../styles/main.css"/>
+  <style>
+    .globe-container { max-width: 1100px; margin: 0 auto; padding: 32px 16px; }
+    .globe-visual { width: 300px; height: 300px; margin: 0 auto 32px; position: relative; animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    .globe-sphere { width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, #1a3a52 0%, #0d1f2d 100%); box-shadow: inset -25px -25px 40px rgba(0,0,0,.5), 0 0 60px rgba(255,183,3,0.3), 0 0 100px rgba(255,106,61,0.2); position: relative; overflow: hidden; }
+    .globe-continents { position: absolute; width: 100%; height: 100%; background-image: radial-gradient(circle at 30% 40%, rgba(255,183,3,0.3) 0%, transparent 40%), radial-gradient(circle at 70% 30%, rgba(255,183,3,0.2) 0%, transparent 30%), radial-gradient(circle at 50% 70%, rgba(255,183,3,0.25) 0%, transparent 35%); animation: rotate 20s linear infinite; }
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .globe-markers { position: absolute; width: 100%; height: 100%; }
+    .marker { position: absolute; width: 12px; height: 12px; background: var(--primary-2); border-radius: 50%; box-shadow: 0 0 10px var(--primary-2); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.7; } }
+    .marker:nth-child(1) { top: 30%; left: 25%; }
+    .marker:nth-child(2) { top: 40%; left: 55%; animation-delay: 0.5s; }
+    .marker:nth-child(3) { top: 60%; left: 70%; animation-delay: 1s; }
+    .marker:nth-child(4) { top: 50%; left: 15%; animation-delay: 1.5s; }
+    .marker:nth-child(5) { top: 35%; left: 80%; animation-delay: 2s; }
+    .region-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 32px; }
+    .region-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+    .region-card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-color: var(--primary-2); }
+    .region-icon { font-size: 3em; text-align: center; margin-bottom: 12px; }
+    .world-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .stat-card { background: var(--card); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid var(--border); }
+    .stat-number { font-size: 2.5em; font-weight: bold; color: var(--primary-2); }
+    .stat-label { color: var(--muted); font-size: 0.95em; }
+  </style>
+</head>
+<body class="theme-dark">
+  <header class="navbar">
+    <div class="brand"><img class="logo" src="../assets/icons/pin.svg" alt=""><span>TravelMate</span></div>
+    <nav class="navlinks">
+      <a href="../index.html">Home</a>
+      <a href="about_us.html">About Us</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="explore.html">🌍 Explore</a>
+      <a href="booking.html">Booking</a>
+    </nav>
+  </header>
+  <section class="hero" style="background-image: linear-gradient(0deg, rgba(11,18,32,.7), rgba(11,18,32,.7)), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80'); min-height:50vh;">
+    <div class="hero-content">
+      <h1>🌍 Explore the World</h1>
+      <p>Discover destinations across continents. Your next adventure awaits.</p>
+    </div>
+  </section>
+  <section class="globe-container">
+    <div class="globe-visual">
+      <div class="globe-sphere">
+        <div class="globe-continents"></div>
+        <div class="globe-markers">
+          <div class="marker"></div>
+          <div class="marker"></div>
+          <div class="marker"></div>
+          <div class="marker"></div>
+          <div class="marker"></div>
+        </div>
+      </div>
+    </div>
+    <div class="world-stats">
+      <div class="stat-card fade-in"><div class="stat-number">150+</div><div class="stat-label">Countries</div></div>
+      <div class="stat-card fade-in"><div class="stat-number">500+</div><div class="stat-label">Destinations</div></div>
+      <div class="stat-card fade-in"><div class="stat-number">10K+</div><div class="stat-label">Happy Travelers</div></div>
+      <div class="stat-card fade-in"><div class="stat-number">24/7</div><div class="stat-label">Support</div></div>
+    </div>
+    <h2 style="text-align:center;">Explore by Region</h2>
+    <div class="region-grid">
+      <div class="region-card fade-in" onclick="location.href='destinations.html?region=asia'"><div class="region-icon">🏯</div><h3>Asia</h3><p style="color:var(--muted);">Temples, mountains, beaches</p><p style="color:var(--primary-2);font-weight:600;">120+ destinations</p></div>
+      <div class="region-card fade-in" onclick="location.href='destinations.html?region=europe'"><div class="region-icon">🏰</div><h3>Europe</h3><p style="color:var(--muted);">Historic cities and art</p><p style="color:var(--primary-2);font-weight:600;">80+ destinations</p></div>
+      <div class="region-card fade-in" onclick="location.href='destinations.html?region=americas'"><div class="region-icon">🗽</div><h3>Americas</h3><p style="color:var(--muted);">Vibrant cities, nature</p><p style="color:var(--primary-2);font-weight:600;">90+ destinations</p></div>
+      <div class="region-card fade-in" onclick="location.href='destinations.html?region=africa'"><div class="region-icon">🦁</div><h3>Africa</h3><p style="color:var(--muted);">Safaris and wonders</p><p style="color:var(--primary-2);font-weight:600;">60+ destinations</p></div>
+      <div class="region-card fade-in" onclick="location.href='destinations.html?region=oceania'"><div class="region-icon">🏝️</div><h3>Oceania</h3><p style="color:var(--muted);">Islands and reefs</p><p style="color:var(--primary-2);font-weight:600;">50+ destinations</p></div>
+      <div class="region-card fade-in" onclick="location.href='destinations.html?region=middle-east'"><div class="region-icon">🕌</div><h3>Middle East</h3><p style="color:var(--muted);">Luxury and heritage</p><p style="color:var(--primary-2);font-weight:600;">40+ destinations</p></div>
+    </div>
+  </section>
+  <footer class="footer"><p>© <span id="year"></span> TravelMate</p></footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

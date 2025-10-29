@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us — TravelMate</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body class="theme-dark">
+    <header class="navbar">
+      <div class="brand">
+        <img src="../assets/icons/logo.png" alt="" class="logo" /><span
+          >TravelMate</span
+        >
+      </div>
+      <nav class="navlinks">
+        <a href="../index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="booking.html">Booking</a>
+        <a href="customer_reviews.html">Reviews</a>
+        <a href="contact_us.html">Contact</a>
+      </nav>
+    </header>
+    <section
+      class="hero"
+      style="
+        background-image: url('../assets/images/contact.jpg');
+        min-height: 40vh;
+        text-align: center;
+      "
+    >
+      <div class="hero-content">
+        <h1>Contact Us</h1>
+        <p>
+          We’d love to hear from you! Reach out for bookings, support, or
+          partnership opportunities.
+        </p>
+      </div>
+    </section>
+    <section class="section">
+      <form
+        id="contactForm"
+        style="max-width: 420px; margin: 0 auto; display: grid; gap: 12px"
+      >
+        <input name="name" placeholder="Your Name" required />
+        <input name="email" type="email" placeholder="Your Email" required />
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          required
+          rows="3"
+        ></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+      <p id="contactMsg" class="muted" style="text-align: center"></p>
+    </section>
+    <footer class="footer">
+      <p>
+        © <span id="year"></span> TravelMate •
+        <a href="mailto:contact@travelmate.com" style="color: var(--muted)"
+          >contact@travelmate.com</a
+        >
+      </p>
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("contactForm").onsubmit = (e) => {
+        e.preventDefault();
+        document.getElementById("contactMsg").textContent =
+          "Thank you! We will get back to you soon.";
+        e.target.reset();
+      };
+    </script>
+  </body>
+</html>

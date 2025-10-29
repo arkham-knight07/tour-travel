@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customer Reviews — TravelMate</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body class="theme-dark">
+    <header class="navbar">
+      <div class="brand">
+        <img src="../assets/icons/logo.png" alt="" class="logo" /><span
+          >TravelMate</span
+        >
+      </div>
+      <nav class="navlinks">
+        <a href="../index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="booking.html">Booking</a>
+      </nav>
+    </header>
+    <section class="section alt" id="reviews">
+      <h2>Customer Reviews</h2>
+      <div id="reviewsList" class="grid features" style="gap: 18px"></div>
+      <div class="grid features" style="margin-top: 24px">
+        <img
+          src="../assets/images/testimonals/priya.jpg"
+          alt="Reviewer 1"
+          loading="lazy"
+          style="
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+          "
+        />
+        <img
+          src="../assets/images/testimonals/arjun.jpg"
+          alt="Reviewer 2"
+          loading="lazy"
+          style="
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+          "
+        />
+        <img
+          src="../assets/images/reviewers/reviewer3.jpg"
+          alt="Reviewer 3"
+          loading="lazy"
+          style="
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+          "
+        />
+      </div>
+      <form
+        id="reviewForm"
+        style="max-width: 420px; margin: 24px auto 0; display: grid; gap: 10px"
+      >
+        <input name="name" placeholder="Your Name" required />
+        <textarea
+          name="review"
+          placeholder="Share your experience…"
+          required
+          rows="2"
+        ></textarea>
+        <select name="rating" required>
+          <option value="">Rating</option>
+          <option>5</option>
+          <option>4</option>
+          <option>3</option>
+          <option>2</option>
+          <option>1</option>
+        </select>
+        <button class="btn" type="submit">Submit Review</button>
+      </form>
+      <p id="reviewMsg" class="muted" style="text-align: center"></p>
+    </section>
+    <script>
+      // Simple reviews logic (localStorage for demo)
+      const reviewsList = document.getElementById("reviewsList");
+      const reviewForm = document.getElementById("reviewForm");
+      const reviewMsg = document.getElementById("reviewMsg");
+      function getReviews() {
+        return JSON.parse(localStorage.getItem("reviews") || "[]");
+      }
+      function saveReview(r) {
+        const all = getReviews();
+        all.unshift(r);
+        localStorage.setItem("reviews", JSON.stringify(all));
+      }
+      function renderReviews() {
+        const all = getReviews();
+        reviewsList.innerHTML = all.length
+          ? all
+              .map(
+                (r) => `
+        <div class="feature" style="background:var(--card);">
+          <strong>${r.name}</strong> <span style="color:gold;">${"★".repeat(
+                  r.rating
+                )}</span><br>
+          <span style="color:var(--muted);font-size:.98em;">${r.review}</span>
+        </div>
+      `
+              )
+              .join("")
+          : '<div class="muted">No reviews yet. Be the first!</div>';
+      }
+      reviewForm.onsubmit = (e) => {
+        e.preventDefault();
+        const fd = new FormData(reviewForm);
+        const r = {
+          name: fd.get("name"),
+          review: fd.get("review"),
+          rating: fd.get("rating"),
+        };
+        saveReview(r);
+        reviewForm.reset();
+        reviewMsg.textContent = "Thank you for your review!";
+        renderReviews();
+        setTimeout(() => (reviewMsg.textContent = ""), 2000);
+      };
+      // Demo: add a few reviews if none
+      if (!getReviews().length) {
+        saveReview({
+          name: "Amit",
+          review: "Amazing booking experience!",
+          rating: 5,
+        });
+        saveReview({
+          name: "Sara",
+          review: "Loved the support and deals.",
+          rating: 4,
+        });
+      }
+      renderReviews();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us — TravelMate</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <img src="../assets/icons/logo.png" alt="" class="logo" />
+        <span>TravelMate</span>
+      </div>
+      <nav class="navlinks">
+        <a href="../index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="booking.html">Booking</a>
+      </nav>
+    </header>
+
+    <section
+      class="hero"
+      style="
+        background-image: linear-gradient(
+            0deg,
+            rgba(11, 18, 32, 0.7),
+            rgba(11, 18, 32, 0.7)
+          ),
+          url('../assets/images/hero.jpg');
+        min-height: 40vh;
+      "
+    >
+      <div class="hero-content">
+        <h1>About TravelMate</h1>
+        <p>
+          Empowering your journeys with seamless bookings, curated experiences,
+          and 24/7 support.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="about-gallery">
+      <h2>Our Journey</h2>
+      <div class="grid cards">
+        <img
+          src="../assets/images/destinations/paris.jpg"
+          alt="About Gallery 1"
+          loading="lazy"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+          "
+        />
+        <img
+          src="../assets/images/destinations/newyork.jpg"
+          alt="About Gallery 2"
+          loading="lazy"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+          "
+        />
+        <img
+          src="../assets/images/destinations/jaipur.jpg"
+          alt="About Gallery 3"
+          loading="lazy"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+          "
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Who We Are</h2>
+      <p style="max-width: 700px; margin: 0 auto 24px; text-align: center">
+        TravelMate is a passionate team of travel enthusiasts, tech experts, and
+        customer service professionals. Our mission is to make travel planning
+        effortless, affordable, and inspiring for everyone. Whether you crave
+        adventure, relaxation, or cultural discovery, we bring the world closer
+        to you.
+      </p>
+
+      <div class="grid features">
+        <div class="feature">
+          <h3>Curated Tours</h3>
+          <p>
+            Handpicked destinations, unique experiences, and the best deals for
+            every traveler.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Easy Booking</h3>
+          <p>
+            Book flights, hotels, treks, and more in just a few clicks — all in
+            one place.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>24/7 Support</h3>
+          <p>
+            Our team is always here to help you before, during, and after your
+            trip.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Trusted by Thousands</h3>
+          <p>
+            We’ve helped thousands of travelers create unforgettable memories
+            worldwide.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <h2>Meet Our Team</h2>
+      <div class="grid features">
+        <div class="feature" style="text-align: center">
+          <div
+            style="
+              width: 190px;
+              height: 190px;
+              margin: 0 auto 16px;
+              border-radius: 50%;
+              background: #222;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+            "
+          >
+            <img
+              src="../assets/images/team/shrestha.jpg"
+              alt="Shrestha Verdhan"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+              "
+              onerror="this.parentNode.querySelector('span').style.display='block'; this.style.display='none';"
+            />
+            <span style="color: var(--muted); font-size: 2.5em; display: none"
+              >👤</span
+            >
+          </div>
+          <h3>Shrestha Verdhan</h3>
+          <p>
+            Backend & Styling<br /><span style="color: var(--muted)"
+              >APIs, server logic, and beautiful styles.</span
+            >
+          </p>
+        </div>
+        <div class="feature" style="text-align: center">
+          <div
+            style="
+              width: 190px;
+              height: 190px;
+              margin: 0 auto 16px;
+              border-radius: 50%;
+              background: #222;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+            "
+          >
+            <img
+              src="../assets/images/team/ramya.jpg"
+              alt="Ramya Pathak"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+              "
+              onerror="this.parentNode.querySelector('span').style.display='block'; this.style.display='none';"
+            />
+            <span style="color: var(--muted); font-size: 2.5em; display: none"
+              >👤</span
+            >
+          </div>
+          <h3>Ramya Pathak</h3>
+          <p>
+            Frontend & Report<br /><span style="color: var(--muted)"
+              >UI development and project documentation.</span
+            >
+          </p>
+        </div>
+        <div class="feature" style="text-align: center">
+          <div
+            style="
+              width: 100px;
+              height: 100px;
+              margin: 0 auto 16px;
+              border-radius: 50%;
+              background: #222;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+            "
+          >
+            <img
+              src="../assets/images/team/navami.jpg"
+              alt="Navami 3"
+              style="
+                width: 100%;
+                height: 160%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+              "
+              onerror="this.parentNode.querySelector('span').style.display='block'; this.style.display='none';"
+            />
+            <span style="color: var(--muted); font-size: 2.5em; display: none"
+              >👤</span
+            >
+          </div>
+          <h3>Navami S</h3>
+          <p>
+            UI/UX & Graphics<br /><span style="color: var(--muted)"
+              >Design, user experience, and graphics.</span
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Our Values</h2>
+      <div class="grid features">
+        <div class="feature">
+          <h3>Transparency</h3>
+          <p>No hidden fees. Honest advice. Real reviews.</p>
+        </div>
+        <div class="feature">
+          <h3>Innovation</h3>
+          <p>We use technology to make travel smarter and easier.</p>
+        </div>
+        <div class="feature">
+          <h3>Community</h3>
+          <p>We support local businesses and sustainable tourism.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      &copy; <span id="year"></span> TravelMate. All rights reserved.
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

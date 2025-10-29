@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login — TravelMate</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .auth-container {
+        width: 100%;
+        max-width: 420px;
+        padding: 20px;
+      }
+
+      .auth-box {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .auth-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .auth-header h1 {
+        font-size: 2em;
+        font-weight: 900;
+        margin: 0 0 10px 0;
+        color: var(--text);
+      }
+
+      .auth-header p {
+        color: var(--muted);
+        font-size: 0.95em;
+        margin: 0;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.9em;
+        margin-bottom: 8px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+        font-size: 1em;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.1);
+      }
+
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .form-actions {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9em;
+      }
+
+      .form-actions a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .form-actions a:hover {
+        color: var(--accent);
+      }
+
+      .remember-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .remember-checkbox input {
+        width: auto;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        color: var(--text);
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(15, 52, 96, 0.3);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .submit-btn.loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .auth-divider {
+        display: flex;
+        align-items: center;
+        margin: 25px 0;
+        color: var(--muted);
+        font-size: 0.85em;
+      }
+
+      .auth-divider::before,
+      .auth-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .auth-divider span {
+        margin: 0 10px;
+      }
+
+      .social-login {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .social-btn {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        color: var(--text);
+        cursor: pointer;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+      }
+
+      .social-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .auth-footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: var(--muted);
+      }
+
+      .auth-footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .auth-footer a:hover {
+        text-decoration: underline;
+      }
+
+      .error-message {
+        padding: 12px;
+        background: rgba(255, 107, 107, 0.1);
+        border: 1px solid rgba(255, 107, 107, 0.3);
+        border-radius: 8px;
+        color: #ff6b6b;
+        font-size: 0.85em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .error-message.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .success-message {
+        padding: 12px;
+        background: rgba(78, 205, 196, 0.1);
+        border: 1px solid rgba(78, 205, 196, 0.3);
+        border-radius: 8px;
+        color: #4ecdc4;
+        font-size: 0.85em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .success-message.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+      }
+
+      .toggle-form {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: var(--muted);
+      }
+
+      .toggle-form button {
+        background: none;
+        border: none;
+        color: var(--primary);
+        cursor: pointer;
+        font-weight: 600;
+        text-decoration: underline;
+        margin-left: 5px;
+      }
+
+      .toggle-form button:hover {
+        color: var(--accent);
+      }
+
+      .form-group.hidden {
+        display: none;
+      }
+
+      @media (max-width: 480px) {
+        .auth-box {
+          padding: 30px 20px;
+        }
+
+        .auth-header h1 {
+          font-size: 1.5em;
+        }
+      }
+    </style>
+  </head>
+  <body class="theme-dark">
+    <div class="auth-container">
+      <div class="auth-box">
+        <div class="auth-header">
+          <h1>🌍 TravelMate</h1>
+          <p id="formTitle">Welcome Back</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <form id="authForm" onsubmit="handleSubmit(event)">
+          <!-- Name field (hidden for login, shown for signup) -->
+          <div class="form-group hidden" id="nameGroup">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="John Doe"
+              autocomplete="name"
+            />
+          </div>
+
+          <!-- Email field -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <!-- Phone field (hidden for login, shown for signup) -->
+          <div class="form-group hidden" id="phoneGroup">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+1 (555) 123-4567"
+              autocomplete="tel"
+            />
+          </div>
+
+          <!-- Country field (hidden for login, shown for signup) -->
+          <div class="form-group hidden" id="countryGroup">
+            <label for="country">Country</label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              placeholder="United States"
+              autocomplete="country-name"
+            />
+          </div>
+
+          <!-- Password field -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <!-- Confirm Password field (hidden for login, shown for signup) -->
+          <div class="form-group hidden" id="confirmPasswordGroup">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="••••••••"
+              autocomplete="new-password"
+            />
+          </div>
+
+          <!-- Remember me / Forgot password -->
+          <div class="form-actions" id="loginActions">
+            <label class="remember-checkbox">
+              <input type="checkbox" id="rememberMe" />
+              <span>Remember me</span>
+            </label>
+            <a href="#forgot">Forgot password?</a>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Sign In
+          </button>
+        </form>
+
+        <!-- Social login -->
+        <div class="auth-divider">
+          <span>or continue with</span>
+        </div>
+        <div class="social-login">
+          <button
+            class="social-btn"
+            onclick="socialLogin('google')"
+            title="Google"
+          >
+            🔵 Google
+          </button>
+          <button
+            class="social-btn"
+            onclick="socialLogin('github')"
+            title="GitHub"
+          >
+            ⬛ GitHub
+          </button>
+          <button
+            class="social-btn"
+            onclick="socialLogin('apple')"
+            title="Apple"
+          >
+            🍎 Apple
+          </button>
+        </div>
+
+        <!-- Toggle between login and signup -->
+        <div class="toggle-form">
+          <span id="toggleText">Don't have an account?</span>
+          <button type="button" id="toggleBtn" onclick="toggleForm()">
+            Sign Up
+          </button>
+        </div>
+      </div>
+
+      <div class="auth-footer">
+        <a href="/">← Back to Home</a>
+      </div>
+    </div>
+
+    <script>
+      // State management
+      let isSignup = false;
+      const API_BASE_URL = "http://localhost:5002";
+
+      // Toggle between login and signup
+      function toggleForm() {
+        isSignup = !isSignup;
+
+        const formTitle = document.getElementById("formTitle");
+        const toggleText = document.getElementById("toggleText");
+        const toggleBtn = document.getElementById("toggleBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const loginActions = document.getElementById("loginActions");
+
+        // Toggle form fields visibility
+        document.getElementById("nameGroup").classList.toggle("hidden");
+        document.getElementById("phoneGroup").classList.toggle("hidden");
+        document.getElementById("countryGroup").classList.toggle("hidden");
+        document
+          .getElementById("confirmPasswordGroup")
+          .classList.toggle("hidden");
+
+        if (isSignup) {
+          formTitle.textContent = "Create Account";
+          toggleText.textContent = "Already have an account?";
+          toggleBtn.textContent = "Sign In";
+          submitBtn.textContent = "Create Account";
+          loginActions.style.display = "none";
+        } else {
+          formTitle.textContent = "Welcome Back";
+          toggleText.textContent = "Don't have an account?";
+          toggleBtn.textContent = "Sign Up";
+          submitBtn.textContent = "Sign In";
+          loginActions.style.display = "flex";
+        }
+
+        // Clear messages
+        document.getElementById("errorMessage").classList.remove("active");
+        document.getElementById("successMessage").classList.remove("active");
+      }
+
+      // Handle form submission
+      async function handleSubmit(event) {
+        event.preventDefault();
+
+        const submitBtn = document.getElementById("submitBtn");
+        const errorMsg = document.getElementById("errorMessage");
+        const successMsg = document.getElementById("successMessage");
+
+        // Clear messages
+        errorMsg.classList.remove("active");
+        successMsg.classList.remove("active");
+
+        try {
+          // Set loading state
+          submitBtn.classList.add("loading");
+          submitBtn.disabled = true;
+          submitBtn.textContent = isSignup
+            ? "Creating Account..."
+            : "Signing In...";
+
+          if (isSignup) {
+            // Sign up
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const country = document.getElementById("country").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword =
+              document.getElementById("confirmPassword").value;
+
+            // Validation
+            if (
+              !name ||
+              !email ||
+              !phone ||
+              !country ||
+              !password ||
+              !confirmPassword
+            ) {
+              throw new Error("All fields are required");
+            }
+
+            if (password.length < 6) {
+              throw new Error("Password must be at least 6 characters");
+            }
+
+            if (password !== confirmPassword) {
+              throw new Error("Passwords do not match");
+            }
+
+            // Register
+            const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name,
+                email,
+                phone,
+                country,
+                password,
+              }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.error || "Registration failed");
+            }
+
+            // Success
+            successMsg.textContent = `✅ Account created! Redirecting to login...`;
+            successMsg.classList.add("active");
+
+            // Save token
+            if (data.token) {
+              localStorage.setItem("authToken", data.token);
+              localStorage.setItem("user", JSON.stringify(data.user));
+            }
+
+            // Redirect after 2 seconds
+            setTimeout(() => {
+              window.location.href = "/";
+            }, 2000);
+          } else {
+            // Sign in
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            if (!email || !password) {
+              throw new Error("Email and password are required");
+            }
+
+            // Login
+            const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.error || "Login failed");
+            }
+
+            // Success
+            successMsg.textContent = `✅ Login successful! Redirecting...`;
+            successMsg.classList.add("active");
+
+            // Save token and user data
+            if (data.token) {
+              localStorage.setItem("authToken", data.token);
+              localStorage.setItem("user", JSON.stringify(data.user));
+            }
+
+            // Redirect after 2 seconds
+            setTimeout(() => {
+              window.location.href = "/";
+            }, 2000);
+          }
+        } catch (error) {
+          errorMsg.textContent = `❌ ${error.message}`;
+          errorMsg.classList.add("active");
+        } finally {
+          submitBtn.classList.remove("loading");
+          submitBtn.disabled = false;
+          submitBtn.textContent = isSignup ? "Create Account" : "Sign In";
+        }
+      }
+
+      // Social login (placeholder)
+      function socialLogin(provider) {
+        alert(`🚀 ${provider.toUpperCase()} login will be coming soon!`);
+      }
+    </script>
+  </body>
+</html>

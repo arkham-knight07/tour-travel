@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Book a Trip — TravelMate</title>
+  <link rel="stylesheet" href="../styles/main.css"/>
+  <style>
+    /* Booking confirmation animation */
+    .booking-success {
+      animation: popIn 0.7s cubic-bezier(.4,2,.6,1);
+      color: var(--primary-2);
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      80% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .faq-list { margin-top: 32px; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+    .faq-item summary { cursor: pointer; font-weight: 700; }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .spinner {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 3px solid var(--primary-2);
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .copy-ref-btn {
+      background: var(--panel);
+      color: var(--primary-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      margin-left: 8px;
+      cursor: pointer;
+      font-size: 0.98em;
+      transition: background .2s;
+    }
+    .copy-ref-btn:hover {
+      background: var(--primary-2);
+      color: #fff;
+    }
+    .success-actions {
+      margin-top: 12px;
+      text-align: center;
+    }
+    .faq-list.enhanced details[open] {
+      border-color: var(--primary-2);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+    }
+    .faq-list.enhanced summary::before {
+      content: '❓';
+      margin-right: 8px;
+      font-size: 1.1em;
+      vertical-align: middle;
+    }
+
+    /* Chatbot styles */
+    .chat-button {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: background .3s;
+    }
+    .chat-button:hover {
+      background: var(--primary-2);
+    }
+    .chat-window {
+      position: fixed;
+      bottom: 80px;
+      right: 24px;
+      width: 360px;
+      max-width: 90vw;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      z-index: 1000;
+    }
+    .chat-window.hidden {
+      display: none;
+    }
+    .chat-header {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 16px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .chat-body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--bg);
+    }
+    .chat-input {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      background: var(--panel);
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    .chat-input input {
+      flex: 1;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 10px;
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    .chat-input button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background .3s;
+    }
+    .chat-input button:hover {
+      background: var(--primary-2);
+    }
+    .chat-message {
+      padding: 8px 12px;
+      border-radius: 12px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .chat-message.user {
+      align-self: flex-end;
+      background: var(--primary);
+      color: #fff;
+    }
+    .chat-message.bot {
+      align-self: flex-start;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body class="theme-dark">
+  <header class="navbar">
+    <div class="brand"><img class="logo" src="../assets/icons/pin.svg" alt=""><span>TravelMate</span></div>
+    <nav class="navlinks">
+      <a href="../index.html">Home</a>
+      <a href="about_us.html">About Us</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="booking.html">Booking</a>
+      <a href="customer_reviews.html">Reviews</a>
+      <a href="contact_us.html">Contact</a>
+    </nav>
+  </header>
+  <section class="hero" style="background-image: linear-gradient(0deg, rgba(11,18,32,.7), rgba(11,18,32,.7)), url('../assets/images/hero.jpg');">
+    <div class="hero-content">
+      <h1>Book Your Trip</h1>
+      <p>Fill in your details to confirm your adventure with TravelMate.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div id="tourSummary"></div>
+    <form id="bookForm" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:700px;margin:0 auto;">
+      <input name="name" placeholder="Full Name" required autocomplete="name"/>
+      <input name="email" type="email" placeholder="Email" required autocomplete="email"/>
+      <input name="phone" placeholder="Phone" required autocomplete="tel"/>
+      <input name="startDate" type="date" required />
+      <input name="people" type="number" min="1" value="1" required />
+      <input name="tourId" id="tourId" placeholder="Tour ID (auto)" readonly style="background:#222;opacity:.7;" />
+      <button class="btn" type="submit" style="grid-column:1/-1">Confirm Booking</button>
+    </form>
+    <p id="bookMsg" class="muted" style="text-align:center;margin-top:16px;"></p>
+    <div class="success-actions" id="successActions" style="display:none;">
+      <button class="btn" onclick="location.href='../index.html'">Back to Home</button>
+    </div>
+    <div style="text-align:center;margin-top:18px;">
+      <a href="#" id="viewBookings" style="color:var(--primary-2);text-decoration:underline;font-size:.98em;">View all bookings (demo)</a>
+    </div>
+    <div class="faq-list enhanced" id="bookingFaq"></div>
+  </section>
+  <footer class="footer">
+    <p>© <span id="year"></span> TravelMate • <a href="mailto:contact@travelmate.com" style="color:var(--muted)">contact@travelmate.com</a></p>
+  </footer>
+
+  <!-- Chatbot -->
+  <button id="chatButton" class="chat-button" aria-label="Open chat" aria-haspopup="dialog" aria-controls="chatWindow">💬</button>
+  <div id="chatWindow" class="chat-window hidden" role="dialog" aria-modal="true" aria-label="Support Chat">
+    <div class="chat-header">
+      <strong id="chatTitle">Support Bot</strong>
+      <button id="chatClose" class="chat-close" aria-label="Close chat window">×</button>
+    </div>
+    <div id="chatBody" class="chat-body" aria-live="polite" aria-atomic="false"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Ask about booking, refund, visa…" aria-label="Type your message" autocomplete="off" />
+      <button id="chatSend" aria-label="Send message">Send</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createBooking, fetchTours, fetchFAQ } from "../scripts/api.js";
+    
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const params = new URLSearchParams(location.search);
+      const t = params.get("tour");
+      if (t) document.getElementById("tourId").value = t;
+
+      // Show tour summary if tour param is present
+      async function showTourSummary(tourId) {
+        if (!tourId) return;
+        try {
+          const tours = await fetchTours();
+          const tour = tours.find(t => t.id === tourId);
+          if (!tour) return;
+          document.getElementById("tourSummary").innerHTML = `
+            <div class="card fade-in" style="max-width:420px;margin:0 auto 24px;">
+              <img src="../${tour.image}" alt="${tour.title}" style="height:180px;object-fit:cover;width:100%">
+              <div class="p">
+                <h3>${tour.title}</h3>
+                <p>${tour.short || ""}</p>
+                <p class="price">${tour.currency || "₹"}${tour.price}</p>
+              </div>
+            </div>
+          `;
+        } catch(err) {
+          console.error("Error loading tour:", err);
+        }
+      }
+      showTourSummary(t);
+
+      const form = document.getElementById("bookForm");
+      const msg = document.getElementById("bookMsg");
+      const successActions = document.getElementById("successActions");
+      
+      form.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        msg.innerHTML = `<span class="spinner"></span>Submitting…`;
+        successActions.style.display = "none";
+        const payload = Object.fromEntries(new FormData(form).entries());
+        try{
+          const res = await createBooking(payload);
+          if(res.ok) {
+            form.reset();
+            msg.innerHTML = `✅ <b>Booked!</b> Reference: <span id="refCode">${res.ref}</span>
+              <button class="copy-ref-btn" onclick="navigator.clipboard.writeText('${res.ref}')">Copy</button>`;
+            msg.classList.add("booking-success");
+            successActions.style.display = "block";
+            setTimeout(()=>msg.classList.remove("booking-success"), 1800);
+          } else {
+            msg.textContent = `❌ ${res.error || 'Failed'}`;
+          }
+        }catch(err){
+          console.error("Booking error:", err);
+          msg.textContent = "Server error. Try again.";
+        }
+      });
+
+      // Demo: View all bookings
+      document.getElementById("viewBookings").onclick = async (e) => {
+        e.preventDefault();
+        msg.textContent = "Loading bookings…";
+        try {
+          const res = await fetch("http://127.0.0.1:5000/api/bookings");
+          const bookings = await res.json();
+          msg.innerHTML = "<b>All Bookings:</b><br>" + bookings.map(b =>
+            `<span style="color:var(--muted);font-size:.97em;">${b.name} (${b.email}) — ${b.tourId || "N/A"} <span style="color:var(--primary-2);">[${b.ref}]</span></span>`
+          ).join("<br>");
+          successActions.style.display = "none";
+        } catch(err) {
+          console.error("Error loading bookings:", err);
+          msg.textContent = "Failed to load bookings.";
+        }
+      };
+
+      // Booking FAQ
+      async function renderBookingFAQ() {
+        try {
+          const faq = await fetchFAQ();
+          const wrap = document.getElementById("bookingFaq");
+          wrap.innerHTML = Object.entries(faq).map(([k,v],i)=>
+            `<details class="faq-item fade-in"${i===0?' open':''}><summary>${k.charAt(0).toUpperCase()+k.slice(1)}</summary><div>${v}</div></details>`
+          ).join("");
+        } catch(err) {
+          console.error("Error loading FAQ:", err);
+        }
+      }
+      renderBookingFAQ();
+
+      // Chatbot functionality
+      const chatButton = document.getElementById("chatButton");
+      const chatWindow = document.getElementById("chatWindow");
+      const chatClose = document.getElementById("chatClose");
+      const chatBody = document.getElementById("chatBody");
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+
+      if (chatButton && chatWindow && chatClose && chatBody && chatInput && chatSend) {
+        chatButton.onclick = () => {
+          chatWindow.classList.toggle("hidden");
+          if (!chatWindow.classList.contains("hidden")) {
+            chatInput.focus();
+          }
+        };
+
+        chatClose.onclick = () => {
+          chatWindow.classList.add("hidden");
+        };
+
+        chatSend.onclick = sendMessage;
+        chatInput.onkeypress = (e) => {
+          if (e.key === "Enter") sendMessage();
+        };
+
+        async function sendMessage() {
+          const text = chatInput.value.trim();
+          if (!text) return;
+          appendMessage("user", text);
+          chatInput.value = "";
+          
+          // Call backend API
+          try {
+            const res = await fetch("http://127.0.0.1:5000/chat", {
+              method: "POST",
+              headers: {"Content-Type": "application/json"},
+              body: JSON.stringify({message: text})
+            });
+            const data = await res.json();
+            appendMessage("bot", data.reply || "Sorry, I couldn't understand that.");
+          } catch(err) {
+            console.error("Chat error:", err);
+            appendMessage("bot", "Server unavailable. Please try again later.");
+          }
+        }
+
+        function appendMessage(sender, text) {
+          const msgDiv = document.createElement("div");
+          msgDiv.className = `chat-message ${sender}`;
+          msgDiv.textContent = text;
+          chatBody.appendChild(msgDiv);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Add initial bot message
+        appendMessage("bot", "Hi! I can help with booking, payment, refund, cancellation or visa. What would you like to know?");
+      } else {
+        console.error("Chatbot elements not found");
+      }
+    });
+  </script>
+</body>
+</html>
+
+

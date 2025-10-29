@@ -1,0 +1,71 @@
+{
+  "folders": [
+    {
+      "path": "frontend"
+    },
+    {
+      "path": "backend"
+    }
+  ],
+  "settings": {
+    // ----- General -----
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+
+    // ----- Python -----
+    "python.defaultInterpreterPath": "${workspaceFolder}/backend/venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.formatting.provider": "autopep8",
+
+    // ----- Live Server (Frontend) -----
+    "liveServer.settings.root": "/",
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.donotShowInfoMsg": true,
+
+    // ----- Terminal -----
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "liveServer.settings.multiRootWorkspaceName": "frontend"
+  },
+  "extensions": {
+    "recommendations": [
+      // Core web development
+      "ritwickdey.liveserver",
+      "ecmel.vscode-html-css",
+      "pranaygp.vscode-css-peek",
+      "formulahendry.auto-rename-tag",
+      "esbenp.prettier-vscode",
+
+      // Python / Flask / Django
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "cstrap.flask-snippets",
+      "batisteo.vscode-django",
+
+      // Git & collaboration
+      "eamodio.gitlens",
+      "github.vscode-pull-request-github",
+      "ms-vsliveshare.vsliveshare",
+
+      // API testing
+      "humao.rest-client",
+      "rangav.vscode-thunder-client",
+
+      // Productivity
+      "usernamehw.errorlens",
+      "wayou.vscode-todo-highlight",
+      "christian-kohler.path-intellisense",
+
+      // UI/UX helper
+      "naumovs.color-highlight",
+      "kisstkondoros.vscode-gutter-preview"
+    ]
+  }
+}

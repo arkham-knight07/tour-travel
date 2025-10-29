@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Destinations — TravelMate</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body class="theme-dark">
+    <header class="navbar">
+      <div class="brand">
+        <img src="../assets/icons/logo.png" alt="" class="logo" /><span
+          >TravelMate</span
+        >
+      </div>
+      <nav class="navlinks">
+        <a href="../index.html">Home</a>
+        <a href="globe.html">🌍 Globe</a>
+        <a href="about_us.html">About Us</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="booking.html">Booking</a>
+        <a href="customer_reviews.html">Reviews</a>
+        <a href="contact_us.html">Contact</a>
+      </nav>
+    </header>
+    <section
+      class="hero"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
+        min-height: 40vh;
+        text-align: center;
+      "
+    >
+      <div class="hero-content">
+        <h1>Explore Destinations</h1>
+        <p>
+          Discover the world’s best places to visit, from beaches to mountains
+          and everything in between.
+        </p>
+      </div>
+    </section>
+    <section class="section">
+      <h2>🌍 Popular Destinations</h2>
+      <div id="destGrid" class="grid cards">
+        <!-- Dynamic content from JavaScript -->
+      </div>
+
+      <h2 style="margin-top: 48px">🇮🇳 Domestic Destinations</h2>
+      <div class="grid cards">
+        <article class="card">
+          <img
+            src="../assets/images/destinations/goa.jpg"
+            alt="Goa"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>Goa</h3>
+            <p>Beautiful beaches, vibrant nightlife, and Portuguese heritage</p>
+            <p class="price">Starting from ₹8,999</p>
+            <a class="btn" href="booking.html?destination=goa">Explore Goa</a>
+          </div>
+        </article>
+        <article class="card">
+          <img
+            src="../assets/images/destinations/manali.jpg"
+            alt="Manali"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>Manali</h3>
+            <p>
+              Snow-capped mountains, adventure sports, and hill station charm
+            </p>
+            <p class="price">Starting from ₹12,999</p>
+            <a class="btn" href="booking.html?destination=manali"
+              >Explore Manali</a
+            >
+          </div>
+        </article>
+        <article class="card">
+          <img
+            src="../assets/images/destinations/kerala.jpg"
+            alt="Kerala"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>Kerala</h3>
+            <p>Backwaters, houseboats, spices, and God's own country</p>
+            <p class="price">Starting from ₹15,999</p>
+            <a class="btn" href="booking.html?destination=kerala"
+              >Explore Kerala</a
+            >
+          </div>
+        </article>
+        <article class="card">
+          <img
+            src="../assets/images/destinations/ladakh.jpg"
+            alt="Ladakh"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>Ladakh</h3>
+            <p>
+              High altitude desert, monasteries, and breathtaking landscapes
+            </p>
+            <p class="price">Starting from ₹25,999</p>
+            <a class="btn" href="booking.html?destination=ladakh"
+              >Explore Ladakh</a
+            >
+          </div>
+        </article>
+        <article class="card">
+          <img
+            src="../assets/images/destinations/jaipur.jpg"
+            alt="Jaipur"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>Jaipur</h3>
+            <p>Pink city, royal palaces, and rich Rajasthani culture</p>
+            <p class="price">Starting from ₹10,999</p>
+            <a class="btn" href="booking.html?destination=jaipur"
+              >Explore Jaipur</a
+            >
+          </div>
+        </article>
+      </div>
+
+      <h2 style="margin-top: 48px">🌎 International Destinations</h2>
+      <div class="grid cards">
+        <article class="card">
+          <img
+            src="../assets/images/destinations/bali.jpg"
+            alt="Bali"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>Bali, Indonesia</h3>
+            <p>Tropical paradise, temples, rice terraces, and beach resorts</p>
+            <p class="price">Starting from ₹45,999</p>
+            <a class="btn" href="booking.html?destination=bali">Explore Bali</a>
+          </div>
+        </article>
+        <article class="card">
+          <img
+            src="../assets/images/destinations/paris.jpg"
+            alt="Paris"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>Paris, France</h3>
+            <p>City of lights, Eiffel Tower, art, and romantic atmosphere</p>
+            <p class="price">Starting from ₹75,999</p>
+            <a class="btn" href="booking.html?destination=paris"
+              >Explore Paris</a
+            >
+          </div>
+        </article>
+        <article class="card">
+          <img
+            src="../assets/images/destinations/newyork.jpg"
+            alt="New York"
+            loading="lazy"
+          />
+          <div class="p">
+            <h3>New York, USA</h3>
+            <p>The city that never sleeps, skyscrapers, and Broadway shows</p>
+            <p class="price">Starting from ₹85,999</p>
+            <a class="btn" href="booking.html?destination=newyork"
+              >Explore New York</a
+            >
+          </div>
+        </article>
+      </div>
+
+      <div class="grid cards" style="margin-top: 32px">
+        <img
+          src="../assets/images/destinations/extra/extra1.jpg"
+          alt="Extra Destination 1"
+          loading="lazy"
+          style="
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+          "
+        />
+        <img
+          src="../assets/images/destinations/extra2.jpg"
+          alt="Extra Destination 2"
+          loading="lazy"
+          style="
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+          "
+        />
+        <img
+          src="../assets/images/destinations/extra3.jpg"
+          alt="Extra Destination 3"
+          loading="lazy"
+          style="
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+          "
+        />
+      </div>
+    </section>
+    <footer class="footer">
+      <p>
+        © <span id="year"></span> TravelMate •
+        <a href="mailto:contact@travelmate.com" style="color: var(--muted)"
+          >contact@travelmate.com</a
+        >
+      </p>
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      // Demo destinations
+      const destGrid = document.getElementById("destGrid");
+      const destinations = [
+        {
+          title: "Goa Beach",
+          image:
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+          desc: "Sun, sand, and sea.",
+        },
+        {
+          title: "Manali Mountains",
+          image:
+            "https://images.unsplash.com/photo-1464013778555-8e723c2f01f8?auto=format&fit=crop&w=600&q=80",
+          desc: "Snowy peaks and adventure.",
+        },
+        {
+          title: "Jaipur Heritage",
+          image:
+            "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=600&q=80",
+          desc: "Palaces and culture.",
+        },
+        {
+          title: "Paris",
+          image:
+            "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+          desc: "Romance and art.",
+        },
+        {
+          title: "Kerala Backwaters",
+          image:
+            "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80",
+          desc: "Lush and tranquil.",
+        },
+        {
+          title: "Dubai",
+          image:
+            "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80",
+          desc: "Luxury and skyscrapers.",
+        },
+      ];
+      destGrid.innerHTML = destinations
+        .map(
+          (d) => `
+      <article class="card fade-in">
+        <img src="${d.image}" alt="${d.title}" loading="lazy">
+        <div class="p">
+          <h3>${d.title}</h3>
+          <p>${d.desc}</p>
+        </div>
+      </article>
+    `
+        )
+        .join("");
+    </script>
+  </body>
+</html>
