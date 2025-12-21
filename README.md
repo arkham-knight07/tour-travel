@@ -287,6 +287,22 @@ lsof -ti:5002 | xargs kill -9
 
 # Or use a different port in app.py
 ```
+### Screenshots
+
+1. Main Page
+   <img width="1464" height="802" alt="Screenshot 2025-10-29 at 12 30 37 PM" src="https://github.com/user-attachments/assets/128939ca-067a-419a-96b7-decd99ddbde4" />
+
+2.Destination Page
+<img width="716" height="754" alt="Screenshot 2025-09-08 at 11 14 44 AM" src="https://github.com/user-attachments/assets/1d6522d2-faa5-4495-8e32-7bb23cb198da" />
+
+3.Deal Page 
+<img width="1459" height="812" alt="Screenshot 2025-10-29 at 12 30 50 PM" src="https://github.com/user-attachments/assets/0773205d-3330-4065-b66d-8ebc47278ba3" />
+
+4.Globe Page
+<img width="1448" height="752" alt="Screenshot 2025-11-09 at 10 24 00 AM" src="https://github.com/user-attachments/assets/f8692553-a066-499d-8783-57228914dd5e" />
+
+
+
 
 ### CORS Issues
 
@@ -299,7 +315,7 @@ MIT License - feel free to use this project for learning or commercial purposes.
 
 ## 👨‍💻 Author
 
-Created with ❤️ by [arkham-knight07](https://github.com/arkham-knight07)
+Created with ❤️ by [arkham-knight07](https://github.com/arkham-knight07) ,[rayak25](https://github.com/rayak25) ,[Nav2428](https://github.com/Nav2428)
 
 ## 🤝 Contributing
 
@@ -307,7 +323,7 @@ Pull requests are welcome! For major changes, please open an issue first.
 
 ## 📞 Support
 
-For support, email contact@travelmate.com or open an issue.
+For support, email verdhanchiku@gmail.com or open an issue.
 
 ---
 
