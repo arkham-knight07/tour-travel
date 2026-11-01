@@ -315,15 +315,12 @@ MIT License - feel free to use this project for learning or commercial purposes.
 
 ## 👨‍💻 Author
 
-Created with ❤️ by [arkham-knight07](https://github.com/arkham-knight07) ,[rayak25](https://github.com/rayak25) ,[Nav2428](https://github.com/Nav2428)
+Created with ❤️ by [arkham-knight07](https://github.com/arkham-knight07)
 
 ## 🤝 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first.
 
-## 📞 Support
-
-For support, email verdhanchiku@gmail.com or open an issue.
 
 ---
 
